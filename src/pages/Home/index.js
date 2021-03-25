@@ -1,4 +1,3 @@
-import MainLayout from "../../layouts/MainLayout";
 import List from "../../components/List";
 import ListItem from "../../components/ListItem";
 
@@ -22,12 +21,10 @@ const tasks = [
 
 export default function Home() {
   return (
-    <MainLayout>
-      <List title="Eventos de hoy">
-        {tasks.map((task) => (
-          <ListItem item={task} />
-        ))}
-      </List>
-    </MainLayout>
+    <List title="Eventos de hoy">
+      {tasks.map((task) => (
+        <ListItem item={task} key={task.id} />
+      ))}
+    </List>
   );
 }
