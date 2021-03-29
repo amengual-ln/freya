@@ -8,13 +8,13 @@ const StyledTable = styled.table`
 
 export default function List ({title, children}) {
   return(
-    <article>
+    <section>
       <h2>{ title }</h2>
       <StyledTable>
         <tbody>
           {children}
         </tbody>
       </StyledTable>
-    </article>
+    </section>
   )
 }
