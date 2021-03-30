@@ -11,6 +11,7 @@ const Aside = styled.aside`
   }
   a {
     text-decoration: none;
+    color: inherit;
     padding: 1em 0;
   }
 `
@@ -19,7 +20,6 @@ export default function SideBar () {
   return (
     <Aside>
       <ul>
-        
         <li>
           <Link to="/portafolios">Portafolios</Link>
         </li>
