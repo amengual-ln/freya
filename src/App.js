@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/Home";
+import Tareas from "./pages/Tareas";
 import Portafolios from "./pages/Portafolios";
 import Proyectos from "./pages/Proyectos";
 import Notas from "./pages/Notas";
@@ -10,6 +11,7 @@ function App() {
     <Router>
       <MainLayout>
         <Route exact path="/" component={Home} />
+        <Route path="/tareas" component={Tareas} />
         <Route path="/portafolios" component={Portafolios} />
         <Route path="/proyectos" component={Proyectos} />
         <Route path="/notas" component={Notas} />
