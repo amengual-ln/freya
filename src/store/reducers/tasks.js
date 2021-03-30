@@ -8,7 +8,7 @@ const initialState = [
   },
   {
     id: "2",
-    status: "To do",
+    status: "Done",
     title: "Mover este hardcodeo horrible a una api",
     assigne: "Lautaro",
     project: "Freya",
