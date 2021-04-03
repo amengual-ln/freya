@@ -11,6 +11,6 @@ const initialState = [
   },
 ];
 
-export default function state(state = initialState, action) {
+export default function state(state = initialState) {
   return state;
 }
