@@ -7,6 +7,11 @@ const Item = styled.div`
   text-align: center;
   color: ${props => props.filled ? 'white' : props.color};
   border-radius: .5rem;
+  transition: .2s;
+  &:hover {
+    box-shadow: 0 5px 10px ${props => props.color};
+    transform: translateY(-3px);
+  }
   a {
     display: block;
     padding: 0.01rem 0;

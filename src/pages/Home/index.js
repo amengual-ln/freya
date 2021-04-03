@@ -13,7 +13,7 @@ function Home({ tasks, projects, briefcases }) {
     <>
       <List title="Eventos de hoy">
         {tasks.map((task) => (
-          <ListItem item={task} key={task.id} />
+          <ListItem item={task} show={["title","assigne", "project", "status"]} key={task.id} />
         ))}
       </List>
       <br />
@@ -24,7 +24,7 @@ function Home({ tasks, projects, briefcases }) {
       </Grid>
       <Grid title="Proyectos" columns="7">
         {projects.map((project) => (
-          <GridItem item={project} url="project" key={project.id} />
+          <GridItem item={project} url="project" filled key={project.id} />
         ))}
       </Grid>
     </>

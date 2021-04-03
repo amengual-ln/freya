@@ -10,7 +10,7 @@ export default function Tasks () {
   return (
     <List title="Tareas!">
       {tasks.map((task) => (
-        <ListItem item={task} key={task.id} />
+        <ListItem item={task} show={["title","assigne", "project", "status"]} key={task.id} />
       ))}
     </List>
   )
