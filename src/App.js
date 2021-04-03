@@ -6,22 +6,22 @@ import store from "./store";
 import MainLayout from "./layouts/MainLayout";
 
 const Home = lazy(() => import("./pages/Home"));
-const Tareas = lazy(() => import("./pages/Tareas"));
-const Portafolios = lazy(() => import("./pages/Portafolios"));
-const Proyectos = lazy(() => import("./pages/Proyectos"));
-const Notas = lazy(() => import("./pages/Notas"));
+const Tareas = lazy(() => import("./pages/Tasks"));
+const Portafolios = lazy(() => import("./pages/Briefcases"));
+const Proyectos = lazy(() => import("./pages/Projects"));
+const Docs = lazy(() => import("./pages/Docs"));
 
 function App() {
   return (
     <Provider store={store}>
       <Router>
-        <Suspense fallback={<h1>Loading</h1>}>
+        <Suspense fallback={MainLayout}>
           <MainLayout>
             <Route exact path="/" component={Home} />
-            <Route path="/tareas" component={Tareas} />
-            <Route path="/portafolios" component={Portafolios} />
-            <Route path="/proyectos" component={Proyectos} />
-            <Route path="/notas" component={Notas} />
+            <Route path="/tasks" component={Tareas} />
+            <Route path="/briefcases" component={Portafolios} />
+            <Route path="/projects" component={Proyectos} />
+            <Route path="/docs" component={Docs} />
           </MainLayout>
         </Suspense>
       </Router>

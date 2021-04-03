@@ -21,16 +21,16 @@ export default function SideBar () {
     <Aside>
       <ul>
         <li>
-          <Link to="/tareas">Tareas</Link>
+          <Link to="/tasks">Tareas</Link>
         </li>
         <li>
-          <Link to="/portafolios">Portafolios</Link>
+          <Link to="/briefcases">Portafolios</Link>
         </li>
         <li>
-          <Link to="/proyectos">Proyectos</Link>
+          <Link to="/projects">Proyectos</Link>
         </li>
         <li>
-          <Link to="/notas">Notas</Link>
+          <Link to="/docs">Docs</Link>
         </li>
       </ul>
     </Aside>
