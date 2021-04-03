@@ -15,7 +15,7 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        <Suspense fallback={MainLayout}>
+        <Suspense fallback={<div></div>}>
           <MainLayout>
             <Route exact path="/" component={Home} />
             <Route path="/tasks" component={Tareas} />
