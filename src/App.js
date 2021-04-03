@@ -8,6 +8,7 @@ import MainLayout from "./layouts/MainLayout";
 const Home = lazy(() => import("./pages/Home"));
 const Tareas = lazy(() => import("./pages/Tasks"));
 const Portafolios = lazy(() => import("./pages/Briefcases"));
+const Portafolio = lazy(() => import("./pages/Briefcase"));
 const Proyectos = lazy(() => import("./pages/Projects"));
 const Docs = lazy(() => import("./pages/Docs"));
 
@@ -20,6 +21,7 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route path="/tasks" component={Tareas} />
             <Route path="/briefcases" component={Portafolios} />
+            <Route path="/briefcase/:id" component={Portafolio} />
             <Route path="/projects" component={Proyectos} />
             <Route path="/docs" component={Docs} />
           </MainLayout>
