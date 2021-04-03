@@ -19,12 +19,12 @@ function Home({ tasks, projects, briefcases }) {
       <br />
       <Grid title="Portafolios" columns="6">
         {briefcases.map((briefcase) => (
-          <GridItem item={briefcase} filled key={briefcase.id} />
+          <GridItem item={briefcase} url="briefcase" filled key={briefcase.id} />
         ))}
       </Grid>
-      <Grid title="Proyectos" columns="8">
+      <Grid title="Proyectos" columns="7">
         {projects.map((project) => (
-          <GridItem item={project} key={project.id} />
+          <GridItem item={project} url="project" key={project.id} />
         ))}
       </Grid>
     </>

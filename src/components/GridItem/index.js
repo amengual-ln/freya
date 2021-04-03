@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from "styled-components"
 
 const Item = styled.div`
@@ -6,12 +7,20 @@ const Item = styled.div`
   text-align: center;
   color: ${props => props.filled ? 'white' : props.color};
   border-radius: .5rem;
+  a {
+    display: block;
+    padding: 0.01rem 0;
+    color: inherit;
+    text-decoration: none;
+  }
 `
 
-export default function GridItem ({ item, filled }) {
+export default function GridItem ({ item, url, filled }) {
   return (
     <Item color={item.color} filled={filled}>
-      <h4>{item.name}</h4>
+      <Link to={`/${url}/${item.id}`}>
+        <h4>{item.name}</h4>
+      </Link>
     </Item>
   )
 }
