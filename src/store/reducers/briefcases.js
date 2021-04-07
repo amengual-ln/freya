@@ -2,12 +2,12 @@ const initialState = [
   {
     id: "1",
     name: "Personal",
-    color: "#6fbfff",
+    color: "#50c878",
   },
   {
     id: "2",
     name: "Upya",
-    color: "#a7e9af",
+    color: "#7352e4",
   },
 ];
 
