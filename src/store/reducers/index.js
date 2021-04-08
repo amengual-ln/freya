@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
-import tasks from "./tasks";
 import briefcases from "./briefcases";
 import projects from "./projects";
+import tasks from "./tasks";
+import docs from "./docs";
 
-export default combineReducers({ tasks, briefcases, projects });
+export default combineReducers({ docs, tasks, briefcases, projects });
