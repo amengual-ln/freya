@@ -11,21 +11,23 @@ const Portafolios = lazy(() => import("./pages/Briefcases"));
 const Portafolio = lazy(() => import("./pages/Briefcase"));
 const Proyectos = lazy(() => import("./pages/Projects"));
 const Docs = lazy(() => import("./pages/Docs"));
+const Doc = lazy(() => import("./pages/Doc"));
 
 function App() {
   return (
     <Provider store={store}>
       <Router>
-        <Suspense fallback={<div></div>}>
           <MainLayout>
-            <Route exact path="/" component={Home} />
-            <Route path="/tasks" component={Tareas} />
-            <Route path="/briefcases" component={Portafolios} />
-            <Route path="/briefcase/:id" component={Portafolio} />
-            <Route path="/projects" component={Proyectos} />
-            <Route path="/docs" component={Docs} />
+            <Suspense fallback={<div></div>}>
+              <Route exact path="/" component={Home} />
+              <Route path="/tasks" component={Tareas} />
+              <Route path="/briefcases" component={Portafolios} />
+              <Route path="/briefcase/:id" component={Portafolio} />
+              <Route path="/projects" component={Proyectos} />
+              <Route path="/docs" component={Docs} />
+              <Route path="/doc/:id" component={Doc} />
+            </Suspense>
           </MainLayout>
-        </Suspense>
       </Router>
     </Provider>
   );
