@@ -12,6 +12,19 @@ const initialState = [
   },
 ];
 
-export default function state(state = initialState) {
+export default function state(state = initialState, action) {
+  if (action?.type === '@docs/SAVE_CONTENT') {
+    const { id, title, content } = action.payload;
+    return state.map(doc => {
+      if(doc.id === id) {
+        return {
+          ...doc,
+          title: title ? title : doc.title,
+          content: content ? content : doc.content,
+        }
+      }
+      return doc
+    })
+  }
   return state;
 }
