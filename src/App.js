@@ -1,7 +1,6 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { Provider } from "react-redux";
-import store from "./store";
+import { useDispatch } from "react-redux";
 
 import MainLayout from "./layouts/MainLayout";
 
@@ -13,23 +12,27 @@ const Proyectos = lazy(() => import("./pages/Projects"));
 const Docs = lazy(() => import("./pages/Docs"));
 const Doc = lazy(() => import("./pages/Doc"));
 
+
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch({ type: '@docs/GET_DOCS' });
+  })
+
   return (
-    <Provider store={store}>
-      <Router>
-          <MainLayout>
-            <Suspense fallback={<div></div>}>
-              <Route exact path="/" component={Home} />
-              <Route path="/tasks" component={Tareas} />
-              <Route path="/briefcases" component={Portafolios} />
-              <Route path="/briefcase/:id" component={Portafolio} />
-              <Route path="/projects" component={Proyectos} />
-              <Route path="/docs" component={Docs} />
-              <Route path="/doc/:id" component={Doc} />
-            </Suspense>
-          </MainLayout>
-      </Router>
-    </Provider>
+    <Router>
+        <MainLayout>
+          <Suspense fallback={<div></div>}>
+            <Route exact path="/" component={Home} />
+            <Route path="/tasks" component={Tareas} />
+            <Route path="/briefcases" component={Portafolios} />
+            <Route path="/briefcase/:id" component={Portafolio} />
+            <Route path="/projects" component={Proyectos} />
+            <Route path="/docs" component={Docs} />
+            <Route path="/doc/:id" component={Doc} />
+          </Suspense>
+        </MainLayout>
+    </Router>
   );
 }
 
