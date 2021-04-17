@@ -14,13 +14,14 @@ export default function state(state = initialState, action) {
     })
   }
   if (action.type === '@docs/SAVE_CONTENT') {
-    const { id, title, content } = action.payload;
-    return state.map(doc => {
-      if(doc.id === id) {
+    const values = action.payload;
+    db.collection('docs').doc(values.id).update(values)
+    state = state.map(doc => {
+      if(doc.id === values.id) {
         return {
-          ...doc,
-          title: title ? title : doc.title,
-          content: content ? content : doc.content,
+          id: values.id ? values.id : doc.id,
+          title: values.title ? values.title : doc.title,
+          content: values.content ? values.content : doc.content,
         }
       }
       return doc
