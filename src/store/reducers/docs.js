@@ -4,8 +4,8 @@ const initialState = [];
 
 export default function state(state = initialState, action) {
   if (action.type === '@docs/GET_DOCS') {
-    db.collection('docs').get().then(res => {
-      res.forEach(doc => {
+    db.collection('docs').onSnapshot((docs) => {
+      docs.forEach(doc => {
         state.push({
           id: doc.id,
           ...doc.data()
