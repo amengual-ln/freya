@@ -2,8 +2,6 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const StyledHeader = styled.header`
-  background: #fafafe;
-  box-shadow: 0 3px 10px rgba(0,0,0,.1);
   margin-bottom: 3em;
   a {
     color: #202020;
