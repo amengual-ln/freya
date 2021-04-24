@@ -2,11 +2,14 @@ import { Link } from 'react-router-dom'
 import styled from "styled-components"
 
 const Doc = styled.div`
-  text-align: center;
   color: #202020;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px rgb(0 0 0 / 15%);
   transition: .2s;
-  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
   &:hover {
+    box-shadow: 0 4px 4px rgb(0 0 0 / 15%);
     transform: translateY(-5px);
   }
   a {
