@@ -32,6 +32,9 @@ export default function SideBar () {
         <li>
           <Link to="/docs">Docs</Link>
         </li>
+        <li>
+          <Link to="/resources">Recursos</Link>
+        </li>
       </ul>
     </Aside>
   )

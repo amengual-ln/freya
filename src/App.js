@@ -15,6 +15,7 @@ const Portafolio = lazy(() => import("./pages/Briefcase"));
 const Proyectos = lazy(() => import("./pages/Projects"));
 const Docs = lazy(() => import("./pages/Docs"));
 const Doc = lazy(() => import("./pages/Doc"));
+const Recursos = lazy(() => import("./pages/Resources"));
 
 export const history = createBrowserHistory();
 
@@ -35,6 +36,7 @@ function App() {
           <Route path="/projects" component={Proyectos} />
           <Route path="/docs" component={Docs} />
           <Route path="/doc/:id" component={Doc} />
+          <Route path="/resources" component={Recursos} />
         </Suspense>
       </MainLayout>
     </Router>
