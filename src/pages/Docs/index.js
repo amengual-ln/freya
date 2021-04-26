@@ -10,7 +10,7 @@ export default function Docs () {
 
   return (
     <>
-      <Grid title="Docs" columns="4">
+      <Grid title="Docs" itemWidth="270px">
         <NewDocButton />
         {docs.map((doc) => (
           <DocGridItem doc={doc} url="doc" key={doc.id} />
