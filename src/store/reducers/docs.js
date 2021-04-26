@@ -4,16 +4,14 @@ import { db } from "../../firebase-config";
 let initialState = [];
 
 export default function state(state = initialState, action) {
-  if (action.type === "@docs/GET_DOCS") {
-    db.collection("docs").onSnapshot((snapshot) => {
-      snapshot.docs.forEach((doc) => {
-        if (!state.find((previousDoc) => previousDoc.id === doc.id)) {
-          state.push({
-            id: doc.id,
-            ...doc.data(),
-          });
-        }
-      });
+  if (action.type === "@docs/SET_DOCS") {
+    action.payload.forEach((doc) => {
+      if (!state.find((previousDoc) => previousDoc.id === doc.id)) {
+        state.push({
+          id: doc.id,
+          ...doc.data(),
+        });
+      }
     });
   }
   if (action.type === "@docs/SAVE_CHANGES") {
@@ -47,3 +45,9 @@ export const SaveNewDoc = () => async (dispatch, getState) => {
   db.collection("docs").doc(res.id).update({ id: res.id });
   history.push(`/doc/${res.id}`);
 };
+
+export const fetchDocs = () => async (dispatch, getState) => {
+  db.collection("docs").orderBy("updatedAt", "desc").onSnapshot((snapshot) => {
+    dispatch({ type: "@docs/SET_DOCS", payload: snapshot.docs })
+  });
+}

@@ -4,6 +4,7 @@ import { Router } from "react-router";
 import { createBrowserHistory } from "history";
 
 import { useDispatch } from "react-redux";
+import { fetchDocs } from "./store/reducers/docs";
 
 import MainLayout from "./layouts/MainLayout";
 
@@ -20,7 +21,7 @@ export const history = createBrowserHistory();
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch({ type: "@docs/GET_DOCS" });
+    dispatch(fetchDocs());
   });
 
   return (
