@@ -27,7 +27,8 @@ const Doc = styled.div`
 
 export default function DocGridItem({ doc, url }) {
   const title = doc.title.replace(/(<([^>]+)>)/gi, "");
-  const updatedAt = dayjs().locale('es').to(dayjs(doc.updatedAt?.toDate()))
+  const date = doc.updatedAt.toDate ? doc.updatedAt.toDate() : dayjs(doc.updatedAt).toDate();
+  const updatedAt = dayjs().locale('es').to(dayjs(date));
   return (
     <Doc>
       <Link to={`/${url}/${doc.id}`}>
