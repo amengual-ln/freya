@@ -5,6 +5,7 @@ import { createBrowserHistory } from "history";
 
 import { useDispatch } from "react-redux";
 import { fetchDocs } from "./store/reducers/docs";
+import { fetchFiles } from "./store/reducers/vault";
 
 import MainLayout from "./layouts/MainLayout";
 
@@ -16,6 +17,7 @@ const Proyectos = lazy(() => import("./pages/Projects"));
 const Docs = lazy(() => import("./pages/Docs"));
 const Doc = lazy(() => import("./pages/Doc"));
 const Recursos = lazy(() => import("./pages/Resources"));
+const Vault = lazy(() => import("./pages/Vault"));
 
 export const history = createBrowserHistory();
 
@@ -23,6 +25,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchDocs());
+    dispatch(fetchFiles());
   });
 
   return (
@@ -37,6 +40,7 @@ function App() {
           <Route path="/docs" component={Docs} />
           <Route path="/doc/:id" component={Doc} />
           <Route path="/resources" component={Recursos} />
+          <Route path="/vault" component={Vault} />
         </Suspense>
       </MainLayout>
     </Router>

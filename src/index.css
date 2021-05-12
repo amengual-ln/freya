@@ -12,3 +12,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.full {
+  display: flex !important;
+  gap: 0 !important;
+  flex-direction: row;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+.full img {
+  max-width: 100% !important;
+  height: 100vh;
+}
+
+.top {
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.visible {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #000;
+}

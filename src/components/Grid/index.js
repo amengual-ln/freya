@@ -12,7 +12,7 @@ export default function Grid ({title, itemWidth = '200px', children}) {
   return (
     <section>
       <h2>{ title }</h2>
-      <GridContainer itemWidth={ itemWidth }>
+      <GridContainer itemWidth={ itemWidth } id="grid">
         { children }
       </GridContainer>
     </section>
