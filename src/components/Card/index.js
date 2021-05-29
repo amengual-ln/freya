@@ -17,10 +17,18 @@ const CardItem = styled.div`
   }
 `;
 
-export default function Card({ children, to, color }) {
+export default function Card({ children, to, href, color }) {
   return (
-    <Link to={to}>
-      <CardItem color={color}>{children}</CardItem>
-    </Link>
+    <>
+      { to ?
+        <Link to={to}>
+          <CardItem color={color}>{children}</CardItem>
+        </Link>
+        :
+        <a target="_blank" rel="noreferrer" href={href}>
+          <CardItem color={color}>{children}</CardItem>
+      </a>
+      }
+    </>
   );
 }
