@@ -5,6 +5,7 @@ import { createBrowserHistory } from "history";
 
 import { useDispatch } from "react-redux";
 import { fetchDocs } from "./store/reducers/docs";
+import { fetchResources } from "./store/reducers/resources";
 
 import MainLayout from "./layouts/MainLayout";
 
@@ -23,6 +24,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchDocs());
+    dispatch(fetchResources());
   });
 
   return (
