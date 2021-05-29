@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import Card from "../Card"
 import styled from "styled-components"
 
 const Item = styled.div`
@@ -22,10 +22,8 @@ const Item = styled.div`
 
 export default function GridItem ({ item, url, filled }) {
   return (
-    <Item color={item.color} filled={filled}>
-      <Link to={`/${url}/${item.id}`}>
-        <h4>{item.name}</h4>
-      </Link>
-    </Item>
+    <Card to={`/${url}/${item.id}`} color={item.color}>
+      <h4>{item.name}</h4>
+    </Card>
   )
 }
