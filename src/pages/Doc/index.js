@@ -10,7 +10,6 @@ import styled from "styled-components";
 const EditableSection = styled.div`
   background: #fff;
   box-shadow: 0 2px 2px rgb(0 0 0 / 15%);
-  min-height: 200px;
 `
 
 export default function Doc() {
