@@ -37,7 +37,7 @@ export const SaveNewDoc = () => async (dispatch, getState) => {
   const now = new Date();
   const values = {
     title: "<h1>Nuevo documento</h1>",
-    content: "<p>Contenido del documento...</p><br/><br/><br/>",
+    content: "<p>Contenido del documento...</p>",
     createdAt: now,
     updatedAt: now,
   };
@@ -50,4 +50,10 @@ export const fetchDocs = () => async (dispatch, getState) => {
   db.collection("docs").orderBy("updatedAt", "desc").onSnapshot((snapshot) => {
     dispatch({ type: "@docs/SET_DOCS", payload: snapshot.docs })
   });
+}
+
+export const deleteDoc = (id) => async (dispatch, getState) => {
+  db.collection("docs").doc(id).delete();
+  const nextState = getState.map((doc) => doc.id !== id);
+  dispatch({ type: "@docs/SET_DOCS", payload: nextState })
 }
