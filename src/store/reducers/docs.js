@@ -30,8 +30,13 @@ export default function state(state = initialState, action) {
       return doc;
     });
   }
+  if (action.type === '@docs/REMOVE_DOC') {
+		state = state.filter((doc) => doc.id !== action.payload)
+	}
   return state;
 }
+
+// // // // // // // // // // // // // // // // // // // // // //
 
 export const SaveNewDoc = () => async (dispatch, getState) => {
   const now = new Date();
@@ -53,7 +58,8 @@ export const fetchDocs = () => async (dispatch, getState) => {
 }
 
 export const deleteDoc = (id) => async (dispatch, getState) => {
-  db.collection("docs").doc(id).delete();
-  const nextState = getState.map((doc) => doc.id !== id);
-  dispatch({ type: "@docs/SET_DOCS", payload: nextState })
+  dispatch({
+    type: '@docs/REMOVE_DOC',
+    payload: id,
+  })
 }
