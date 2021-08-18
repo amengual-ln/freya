@@ -11,7 +11,7 @@ export default function DocGridItem({ doc, url }) {
   const date = doc.updatedAt.toDate ? doc.updatedAt.toDate() : dayjs(doc.updatedAt).toDate();
   const updatedAt = dayjs().locale('es').to(dayjs(date));
   return (
-    <Card to={`/${url}/${doc.id}`}>
+    <Card to={`/${url}/${doc.id}`} deletable collection="docs" id={doc.id}>
       <h4>{ title }</h4>
       <pre>{ updatedAt }</pre>
     </Card>
