@@ -5,7 +5,7 @@ import { createBrowserHistory } from "history";
 
 import { useDispatch } from "react-redux";
 import { fetchDocs } from "./store/reducers/docs";
-import { fetchResources } from "./store/reducers/resources";
+import { fetchLinks } from "./store/reducers/links";
 
 import MainLayout from "./layouts/MainLayout";
 
@@ -16,7 +16,7 @@ const Portafolio = lazy(() => import("./pages/Briefcase"));
 const Proyectos = lazy(() => import("./pages/Projects"));
 const Docs = lazy(() => import("./pages/Docs"));
 const Doc = lazy(() => import("./pages/Doc"));
-const Recursos = lazy(() => import("./pages/Resources"));
+const Links = lazy(() => import("./pages/Links"));
 
 export const history = createBrowserHistory();
 
@@ -24,7 +24,7 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchDocs());
-    dispatch(fetchResources());
+    dispatch(fetchLinks());
   });
 
   return (
@@ -38,7 +38,7 @@ function App() {
           <Route path="/projects" component={Proyectos} />
           <Route path="/docs" component={Docs} />
           <Route path="/doc/:id" component={Doc} />
-          <Route path="/resources" component={Recursos} />
+          <Route path="/links" component={Links} />
         </Suspense>
       </MainLayout>
     </Router>
