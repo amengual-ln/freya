@@ -1,12 +1,17 @@
 import { db } from "../../firebase-config";
 
-import { deleteDoc } from './docs'
+import { deleteDoc, saveNewDoc } from './docs'
 import { deleteLink } from './links'
 
 export const fetchResources = () => async (dispatch, getState) => {
   db.collection("docs").orderBy("updatedAt", "desc").onSnapshot((snapshot) => {
     dispatch({ type: "@docs/SET_DOCS", payload: snapshot.docs })
   });
+}
+
+export const saveNewResource = (collection) => async (dispatch, getState) => {
+  const action = getAction('save', collection)
+  dispatch(action())
 }
 
 export const deleteResource = (collection, id) => async (dispatch, getState) => {
@@ -20,8 +25,12 @@ const getAction = (type, collection) => {
     'docs':  deleteDoc,
     'links': deleteLink,
   }
+  const saveActions = {
+    'docs':  saveNewDoc,
+  }
   const types = {
-    delete: deleteActions
+    delete: deleteActions,
+    save: saveActions,
   }
   return types[type][collection]
 }

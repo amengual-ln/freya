@@ -38,7 +38,7 @@ export default function state(state = initialState, action) {
 
 // // // // // // // // // // // // // // // // // // // // // //
 
-export const SaveNewDoc = () => async (dispatch, getState) => {
+export const saveNewDoc = () => async (dispatch, getState) => {
   const now = new Date();
   const values = {
     title: "<h1>Nuevo documento</h1>",

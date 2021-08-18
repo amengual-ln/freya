@@ -3,7 +3,7 @@ import { getDocs } from "../../store/selectors/docs";
 
 import Grid from "../../components/Grid";
 import DocGridItem from "../../components/DocGridItem";
-import NewDocButton from "../../components/NewDocButton";
+import NewResourceButton from "../../components/NewResourceButton";
 
 export default function Docs () {
   const docs = useSelector(state => getDocs(state))
@@ -11,7 +11,7 @@ export default function Docs () {
   return (
     <>
       <Grid title="Docs" itemWidth="270px">
-        <NewDocButton />
+        <NewResourceButton collection='docs' />
         {docs.map((doc) => (
           <DocGridItem doc={doc} url="doc" key={doc.id} />
         ))}
