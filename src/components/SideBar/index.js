@@ -11,8 +11,11 @@ const Aside = styled.aside`
   }
   a {
     text-decoration: none;
-    color: inherit;
+    color: #777;
     padding: 1em 0;
+  }
+  a:hover {
+    color: #222;
   }
 `
 
@@ -33,7 +36,7 @@ export default function SideBar () {
           <Link to="/docs">Docs</Link>
         </li>
         <li>
-          <Link to="/resources">Recursos</Link>
+          <Link to="/links">Links</Link>
         </li>
       </ul>
     </Aside>

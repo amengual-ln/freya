@@ -8,13 +8,13 @@ const initialState = [
   {
     id: "2",
     briefcaseId: "2",
-    name: "WebUP",
+    name: "AdminUP",
     color: "#201030",
   },
   {
     id: "3",
     briefcaseId: "1",
-    name: "Autovisión",
+    name: "Oh Tea",
     color: "#540668",
   },
 ];
