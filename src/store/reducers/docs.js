@@ -36,6 +36,10 @@ export default function state(state = [], action) {
 
 // // // // // // // // // // // // // // // // // // // // // //
 
+export const setDocs = (docs) => async (dispatch, getState) => {
+  dispatch({ type: "@docs/SET_DOCS", payload: docs })
+}
+
 export const saveNewDoc = () => async (dispatch, getState) => {
   const now = new Date();
   const values = {
