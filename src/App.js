@@ -4,7 +4,7 @@ import { Router } from "react-router";
 import { createBrowserHistory } from "history";
 
 import { useDispatch } from "react-redux";
-import { fetchDocs } from "./store/reducers/docs";
+import { fetchResource } from "./store/reducers/resources";
 import { fetchLinks } from "./store/reducers/links";
 
 import MainLayout from "./layouts/MainLayout";
@@ -23,7 +23,8 @@ export const history = createBrowserHistory();
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchDocs());
+    dispatch(fetchResource('tasks'))
+    dispatch(fetchResource('docs'));
     dispatch(fetchLinks());
   });
 
