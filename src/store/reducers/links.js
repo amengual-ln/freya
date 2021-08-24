@@ -1,8 +1,6 @@
 import { db } from "../../firebase-config";
 
-let initialState = [];
-
-export default function state(state = initialState, action) {
+export default function state(state = [], action) {
   if (action.type === "@links/SET_LINKS") {
     action.payload.forEach((link) => {
       if (!state.find((previousLink) => previousLink.id === link.id)) {

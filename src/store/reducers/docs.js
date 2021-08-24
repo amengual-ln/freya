@@ -1,9 +1,7 @@
 import { history } from "../../App.js";
 import { db } from "../../firebase-config";
 
-let initialState = [];
-
-export default function state(state = initialState, action) {
+export default function state(state = [], action) {
   if (action.type === "@docs/SET_DOCS") {
     action.payload.forEach((doc) => {
       if (!state.find((previousDoc) => previousDoc.id === doc.id)) {
