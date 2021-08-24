@@ -1,20 +1,19 @@
-const initialState = [
-  {
-    id: "1",
-    status: "To do",
-    title: "Una tarea",
-    assigne: "Lautaro",
-    project: "Cada día",
-  },
-  {
-    id: "2",
-    status: "Done",
-    title: "Mover este hardcodeo horrible a una api",
-    assigne: "Lautaro",
-    project: "Freya",
-  },
-];
 
-export default function state(state = initialState) {
+
+export default function state(state = [], action) {
+  if (action.type === "@tasks/SET_TASKS") {
+    action.payload.forEach((task) => {
+      if (!state.find((previousTask) => previousTask.id === task.id)) {
+        state.push({
+          id: task.id,
+          ...task.data(),
+        });
+      }
+    });
+  }
   return state;
+}
+
+export const setTasks = (tasks) => async (dispatch, getState) => {
+  dispatch({ type: "@tasks/SET_TASKS", payload: tasks })
 }
