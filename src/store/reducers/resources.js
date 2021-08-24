@@ -1,11 +1,13 @@
 import { db } from "../../firebase-config";
 
-import { deleteDoc, saveNewDoc } from './docs'
+import { setTasks } from './tasks'
+import { setDocs, deleteDoc, saveNewDoc } from './docs'
 import { deleteLink } from './links'
 
-export const fetchResources = () => async (dispatch, getState) => {
-  db.collection("docs").orderBy("updatedAt", "desc").onSnapshot((snapshot) => {
-    dispatch({ type: "@docs/SET_DOCS", payload: snapshot.docs })
+export const fetchResource = (collection) => async (dispatch, getState) => {
+  db.collection(collection).onSnapshot((snapshot) => {
+    const action = getAction('set', collection)
+    dispatch(action(snapshot.docs))
   });
 }
 
@@ -28,7 +30,12 @@ const getAction = (type, collection) => {
   const saveActions = {
     'docs':  saveNewDoc,
   }
+  const setActions = {
+    'tasks': setTasks,
+    'docs': setDocs,
+  }
   const types = {
+    set: setActions,
     delete: deleteActions,
     save: saveActions,
   }
