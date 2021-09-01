@@ -1,30 +1,25 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
-const Item = styled.tr`
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  td {
-    padding: 10px;
-  }
-`;
+const Item = styled.li`
+  display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: #fff;
+	border-radius: 0.5rem;
+	list-style: none;
+	padding: 0.75rem;
+	margin: 0.5rem 0;
+	& > div { 
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+`
 
-export default function ListItem({ item, show }) {
-  let propsToShow = Object.values(item);
-  if (show) {
-    propsToShow = Object.keys(item)
-      .filter((key) => show.includes(key))
-      .reduce((obj, key) => {
-        obj[key] = item[key];
-        return obj;
-      }, {});
-  }
-
-  const propValues = Object.values(propsToShow).map((prop) => prop);
-
-  return (
-    <Item>
-      {propValues.map((prop, index) => (
-        <td key={`${index}${prop}`}>{prop}</td>
-      ))}
-    </Item>
-  );
+export const ListItem = ({ children }) => {
+	return (
+		<Item>
+			{children}
+		</Item>
+	)
 }

@@ -1,6 +1,6 @@
-import Header from "../../components/Header";
-import SideBar from "../../components/SideBar";
-import Container from "../../components/Container";
+import { Header } from "../../components/Header";
+import { SideBar } from "../../components/SideBar";
+import { Container } from "../../components/Container";
 
 import styled from "styled-components";
 

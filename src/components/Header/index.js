@@ -1,23 +1,11 @@
 import { Link } from 'react-router-dom'
-import styled from 'styled-components'
 
-const StyledHeader = styled.header`
-  a {
-    color: #202020;
-    text-decoration: none;
-  }
-  h1 {
-    margin: 0 0 1em 0;
-    padding: 1rem;
-  }
-`
-
-export default function Header () {
+export const Header = () => {
   return (
-    <StyledHeader>
+    <header>
       <Link to="/">
-        <h1>Freya</h1>
+        <h1 className="m-6 font-medium">Freya</h1>
       </Link>
-    </StyledHeader>
+    </header>
   )
 }

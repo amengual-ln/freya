@@ -1,14 +1,7 @@
-import styled from 'styled-components'
-
-const StyledContainer = styled.div`
-  max-width: 1200px;
-  margin: auto;
-`
-
-export default function Container ({children}) {
+export const Container = ({children}) => {
   return (
-    <StyledContainer>
+    <div className="max-w-screen-xl mx-auto">
       {children}
-    </StyledContainer>
+    </div>
   )
 }
