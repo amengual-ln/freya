@@ -12,4 +12,10 @@
   h2 {
     @apply text-xl;
   }
+  pre {
+    @apply text-sm;
+  }
+  input {
+    @apply outline-none;
+  }
 }
