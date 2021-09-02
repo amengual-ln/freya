@@ -3,19 +3,19 @@ const initialState = [
     id: "1",
     briefcaseId: "1",
     name: "Freya",
-    color: "#6fbfff",
+    color: "blue-400",
   },
   {
     id: "2",
     briefcaseId: "2",
     name: "AdminUP",
-    color: "#201030",
+    color: "purple-900",
   },
   {
     id: "3",
     briefcaseId: "1",
     name: "Oh Tea",
-    color: "#540668",
+    color: "red-200",
   },
 ];
 

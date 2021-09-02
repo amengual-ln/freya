@@ -21,7 +21,7 @@ const DeleteIcon = styled(Delete)`
   right: 0;
 	padding: 0.5rem;
 	margin: -0.25rem 0;
-	width: 1.25rem;
+	width: 2.25rem;
   cursor: pointer;
 	transition: 0.2s;
   z-index: 9;
@@ -34,13 +34,12 @@ const DeleteIcon = styled(Delete)`
 const CardItem = styled.div`
 	
 	color: ${(props) => (props.color ? '#fafafa' : '#202020')};
-	background: ${(props) => (props.color ? props.color : '#fff')};
 	border-radius: 5px;
 	box-shadow: ${(props) =>
 		props.color ? '0 2px 2px ' + props.color : '0 2px 2px rgb(0 0 0 / 15%)'};
 	transition: 0.2s;
 	text-align: center;
-	padding: 1em;
+	padding: 2em;
 `
 
 export default function Card({
@@ -62,13 +61,13 @@ export default function Card({
       {deletable && <DeleteIcon onClick={() => handleDelete()} />}
 			{to ? (
         <Link to={to}>
-          <CardItem color={color} className='card'>
+          <CardItem color={color} className={`card bg-${color ? color : 'white'}`}>
             {children}
           </CardItem>
         </Link>
 			) : (
         <a target="_blank" rel="noreferrer" href={href}>
-          <CardItem color={color} className='card'>
+          <CardItem color={color} className={`card bg-${color ? color : 'white'}`}>
             {children}
           </CardItem>
         </a>
