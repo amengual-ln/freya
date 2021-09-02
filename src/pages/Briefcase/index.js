@@ -14,6 +14,8 @@ export default function Briefcase () {
   return (
     <section>
       <h2>{ briefcase.name }</h2>
+      <br />
+      <p>{ briefcase.description }</p>
       <List>
         {briefcaseProjects.map((project) => (
           <ListItem key={project.id}>

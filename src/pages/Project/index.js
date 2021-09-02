@@ -15,7 +15,9 @@ export default function Briefcase () {
   return (
     <section>
       <h2>{ project.name }</h2>
-      <br></br>
+      <br />
+      <p>{ project.description }</p>
+      <br />
       <h3>Tareas</h3>
       <List>
         { projectTasks.length === 0 && 
