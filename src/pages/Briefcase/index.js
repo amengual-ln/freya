@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 import { getBriefcase } from "../../store/selectors/briefcases";
 import { getBriefcaseProjects } from "../../store/selectors/projects"
 
-import List from "../../components/List"
-import ListItem from "../../components/ListItem"
+import { List } from "../../components/List"
+import { ListItem } from "../../components/ListItem"
 
 export default function Briefcase () {
   const { id } = useParams();
@@ -12,10 +12,15 @@ export default function Briefcase () {
   const briefcaseProjects = useSelector(state => getBriefcaseProjects(state, id));
 
   return (
-    <List title={ briefcase.name }>
-      {briefcaseProjects.map((project) => (
-        <ListItem item={project} show={["name"]} key={project.id} />
-      ))}
-    </List>
+    <section>
+      <h2>{ briefcase.name }</h2>
+      <List>
+        {briefcaseProjects.map((project) => (
+          <ListItem key={project.id}>
+            {project.name}
+          </ListItem>
+        ))}
+      </List>
+    </section>
   )
 }
