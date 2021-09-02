@@ -1,38 +1,16 @@
-import { connect } from "react-redux";
-import { getTasks } from "../../store/selectors/tasks";
-import { getProjects } from "../../store/selectors/projects";
-import { getBriefcases } from "../../store/selectors/briefcases";
+import Tasks from '../Tasks'
+import Briefcases from '../Briefcases'
+import Projects from '../Projects'
 
-import List from "../../components/List";
-import ListItem from "../../components/ListItem";
-import Grid from "../../components/Grid";
-import GridItem from "../../components/GridItem";
+export default function Home() {
 
-function Home({ tasks, projects, briefcases }) {
-  return (
-    <>
-      <List title="Eventos de hoy">
-        {tasks.map((task) => (
-          <ListItem item={task} show={["title","assignee", "project", "status"]} key={task.id} />
-        ))}
-      </List>
-      <br />
-      <Grid title="Portafolios">
-        {briefcases.map((briefcase) => (
-          <GridItem item={briefcase} url="briefcase" filled key={briefcase.id} />
-        ))}
-      </Grid>
-      <Grid title="Proyectos">
-        {projects.map((project) => (
-          <GridItem item={project} url="project" filled key={project.id} />
-        ))}
-      </Grid>
-    </>
-  );
+	return (
+		<>
+			<Tasks />
+			<br />
+			<Briefcases />
+			<br />
+			<Projects />
+		</>
+	)
 }
-
-export default connect((state) => ({
-  tasks: getTasks(state),
-  projects: getProjects(state),
-  briefcases: getBriefcases(state),
-}))(Home);
