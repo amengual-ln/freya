@@ -1,19 +1,23 @@
 import { db } from "../../firebase-config";
 
-import { setTasks } from './tasks'
+import { setTasks, deleteTask, createTask } from './tasks'
 import { setDocs, deleteDoc, saveNewDoc } from './docs'
-import { deleteLink } from './links'
+import { deleteLink, saveNewLink } from './links'
 
 export const fetchResource = (collection) => async (dispatch, getState) => {
-  db.collection(collection).onSnapshot((snapshot) => {
-    const action = getAction('set', collection)
-    dispatch(action(snapshot.docs))
-  });
+  const snapshot = await db.collection(collection).get();
+  const action = getAction('set', collection)
+  dispatch(action(snapshot.docs))
 }
 
-export const saveNewResource = (collection) => async (dispatch, getState) => {
+export const saveNewResource = (collection, payload = null) => async (dispatch, getState) => {
   const action = getAction('save', collection)
-  dispatch(action())
+  if(payload) { 
+    const res = await db.collection(collection).add(payload)
+    await db.collection(collection).doc(res.id).update({ id: res.id })
+    dispatch (action({ id: res.id, ...payload }))
+  }
+  else { dispatch(action()) }
 }
 
 export const deleteResource = (collection, id) => async (dispatch, getState) => {
@@ -24,11 +28,14 @@ export const deleteResource = (collection, id) => async (dispatch, getState) => 
 
 const getAction = (type, collection) => {
   const deleteActions = {
+    'tasks': deleteTask,
     'docs':  deleteDoc,
     'links': deleteLink,
   }
-  const saveActions = {
+  const saveActions = { // should be create
+    'tasks': createTask,
     'docs':  saveNewDoc,
+    'links': saveNewLink,
   }
   const setActions = {
     'tasks': setTasks,
@@ -37,7 +44,7 @@ const getAction = (type, collection) => {
   const types = {
     set: setActions,
     delete: deleteActions,
-    save: saveActions,
+    save: saveActions, // should be create
   }
   return types[type][collection]
 }
