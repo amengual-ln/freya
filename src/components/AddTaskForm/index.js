@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { ListItem } from '../ListItem'
 import { DropdownOptions } from '../DropdownOptions'
 import { getProjects } from '../../store/selectors/projects'
-import { saveNewResource } from '../../store/reducers/resources'
+import { createResource } from '../../store/reducers/resources'
 
 export default function AddTaskForm() {
 	const dispatch = useDispatch()
@@ -23,7 +23,7 @@ export default function AddTaskForm() {
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		dispatch(
-			saveNewResource('tasks', {
+			createResource('tasks', {
 				projectId: selectedProject,
 				status: 'TODO',
 				description: taskDescription,

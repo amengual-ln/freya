@@ -40,7 +40,7 @@ export const setDocs = (docs) => async (dispatch, getState) => {
   dispatch({ type: "@docs/SET_DOCS", payload: docs })
 }
 
-export const saveNewDoc = () => async (dispatch, getState) => {
+export const createDoc = () => async (dispatch, getState) => {
   const now = new Date();
   const values = {
     title: "<h1>Nuevo documento</h1>",

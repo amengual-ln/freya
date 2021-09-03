@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import { saveNewResource } from '../../store/reducers/resources'
+import { createResource } from '../../store/reducers/resources'
 import styled from 'styled-components'
 
 const NewResource = styled.button`
@@ -22,7 +22,7 @@ export default function NewResourceButton({ collection }) {
 	const dispatch = useDispatch()
 
 	const newResource = () => {
-		dispatch(saveNewResource(collection))
+		dispatch(createResource(collection))
 	}
 
 	return <NewResource onClick={newResource}>Nuevo +</NewResource>
