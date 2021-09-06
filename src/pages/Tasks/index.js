@@ -17,7 +17,7 @@ export default function Tasks() {
 	const handleEdit = () => toggle()
 	const handleDelete = (id) => dispatch(deleteResource('tasks', id))
 
-	const modalOptions = [
+	const dropdownOptions = [
 		{ label: 'Editar', handler: handleEdit },
 		{ label: 'Eliminar', handler: handleDelete },
 	]
@@ -42,7 +42,7 @@ export default function Tasks() {
 						</div>
 						<div>
 							<span className="px-4">{task.status}</span>
-							<Dropdown options={modalOptions} taskId={task.id} />
+							<Dropdown options={dropdownOptions} taskId={task.id} />
 						</div>
 					</ListItem>
 				))}
