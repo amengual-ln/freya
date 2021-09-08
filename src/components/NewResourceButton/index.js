@@ -22,7 +22,7 @@ export default function NewResourceButton({ collection }) {
 	const dispatch = useDispatch()
 
 	const newResource = () => {
-		dispatch(createResource(collection))
+		if (collection) { dispatch(createResource(collection)) }
 	}
 
 	return <NewResource onClick={newResource}>Nuevo +</NewResource>

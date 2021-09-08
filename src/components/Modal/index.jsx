@@ -20,10 +20,10 @@ export const Modal = ({ isOpen, hide, children }) => (
 					<Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-30" />
 				</Transition.Child>
 				<Transition.Child
-					enter="ease-out duration-300"
+					enter="ease-out duration-200"
 					enterFrom="transform opacity-0 scale-95"
 					enterTo="transform opacity-100 scale-100"
-					leave="ease-in duration-200"
+					leave="ease-in duration-100"
 					leaveFrom="transform opacity-100 scale-100"
 					leaveTo="transform opacity-0 scale-95"
 				>

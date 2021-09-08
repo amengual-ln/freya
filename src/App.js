@@ -5,7 +5,6 @@ import { createBrowserHistory } from "history";
 
 import { useDispatch } from "react-redux";
 import { fetchResource } from "./store/reducers/resources";
-import { fetchLinks } from "./store/reducers/links";
 
 import MainLayout from "./layouts/MainLayout";
 
@@ -26,8 +25,8 @@ function App() {
   useEffect(() => {
     dispatch(fetchResource('tasks'))
     dispatch(fetchResource('docs'));
-    dispatch(fetchLinks());
-  });
+    dispatch(fetchResource('links'));
+  }, [dispatch]);
 
   return (
     <Router history={history}>

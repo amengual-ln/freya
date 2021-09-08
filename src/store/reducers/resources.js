@@ -2,7 +2,7 @@ import { db } from "../../firebase-config";
 
 import { setTasks, deleteTask, createTask } from './tasks'
 import { setDocs, deleteDoc, createDoc } from './docs'
-import { deleteLink, createLink } from './links'
+import { setLinks, deleteLink, createLink } from './links'
 
 export const fetchResource = (collection) => async (dispatch, getState) => {
   const snapshot = await db.collection(collection).get();
@@ -40,6 +40,7 @@ const getAction = (type, collection) => {
   const setActions = {
     'tasks': setTasks,
     'docs': setDocs,
+    'links': setLinks,
   }
   const types = {
     set: setActions,
