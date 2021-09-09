@@ -12,6 +12,9 @@ export default function state(state = [], action) {
       }
     });
   }
+  if (action.type === "@docs/CREATE_DOC") {
+    state = state.concat(action.payload)
+  }
   if (action.type === "@docs/SAVE_CHANGES") {
     const now = new Date();
     const values = { ...action.payload, updatedAt: now };
@@ -49,7 +52,8 @@ export const createDoc = () => async (dispatch, getState) => {
     updatedAt: now,
   };
   const res = await db.collection("docs").add(values);
-  db.collection("docs").doc(res.id).update({ id: res.id });
+  await db.collection("docs").doc(res.id).update({ id: res.id });
+  dispatch({ type: "@docs/CREATE_DOC", payload: { id: res.id, ...values}})
   history.push(`/doc/${res.id}`);
 };
 
