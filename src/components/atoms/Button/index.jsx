@@ -5,7 +5,7 @@ const defaultStyles = 'rounded mt-2.5 py-1.5 px-3 hover:bg-gray-200'
 export const Button = ({ children, handleClick, circle, primary }) => {
 	return (
 		<button
-			onClick={() => handleClick()}
+			onClick={handleClick}
 			className={ circle ? circleStyles : primary ? primaryStyles : defaultStyles }
 		>
 			{children}
