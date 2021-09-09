@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 
+import { Button } from '../../components/atoms/Button'
 import { createResource } from '../../store/reducers/resources'
 import { faviconGrabber } from '../../utils/faviconGrabber'
 
@@ -16,6 +17,12 @@ export const AddLinkForm = ({ handleClose }) => {
 				siteIcon: siteIcon,
 			})
 		)
+		handleClose()
+		reset()
+	}
+
+	const onCancel = (event) => {
+		event.preventDefault()
 		handleClose()
 		reset()
 	}
@@ -52,12 +59,12 @@ export const AddLinkForm = ({ handleClose }) => {
 					className="w-full bg-gray-100 rounded mb-3.5 p-1.5"
 				/>
 				<div className="flex justify-end">
-					<button className="cursor-pointer rounded mt-2.5 py-1.5 px-3 hover:bg-gray-200">
+					<Button handleClick={(event) => onCancel(event) }>
 						Cancelar
-					</button>
-					<button className="cursor-pointer rounded mt-2.5 ml-2 py-1.5 px-3 text-blue-900 bg-blue-100 hover:bg-blue-200">
+					</Button>
+					<Button primary>
 						Crear
-					</button>
+					</Button>
 				</div>
 			</form>
 		</>

@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { getLinks } from '../../store/selectors/links'
 import { Grid } from '../../components/Grid'
 import Card from '../../components/Card'
+import { Button } from '../../components/atoms/Button'
 import { Modal } from '../../components/Modal'
 import { AddLinkForm } from '../../components/AddLinkForm'
 import { useModal } from '../../hooks/useModal'
@@ -15,9 +16,9 @@ export default function Links() {
 		<section>
 			<h2>Links</h2>
 			<Grid title="Links" itemWidth="270px">
-				<button onClick={toggle} className="bg-white rounded shadow-md">
+				<Button circle handleClick={toggle}>
 					Nuevo +
-				</button>
+				</Button>
 				{links.map((link) => (
 					<Card
 						href={link.url}
