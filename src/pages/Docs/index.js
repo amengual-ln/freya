@@ -14,6 +14,7 @@ require('dayjs/locale/es')
 export default function Docs() {
 	const dispatch = useDispatch()
 	const docs = useSelector((state) => getDocs(state))
+	let sortedDocs = docs.sort((doc1, doc2) => doc2.updatedAt - doc1.updatedAt)
 
 	const getFormattedDate = (date) => {
 		date = date.toDate ? date.toDate() : dayjs(date).toDate()
@@ -30,7 +31,7 @@ export default function Docs() {
 				>
 					Nuevo +
 				</Button>
-				{docs.map((doc) => (
+				{sortedDocs.map((doc) => (
 					<Card
 						to={`/doc/${doc.id}`}
 						deletable
