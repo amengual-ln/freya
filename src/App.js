@@ -1,12 +1,12 @@
-import { lazy, Suspense, useEffect } from "react";
+import { lazy, Suspense } from "react";
+import { useSelector } from 'react-redux'
+import { getIsLoading } from './store/selectors/resources'
 import { Route } from "react-router-dom";
 import { Router } from "react-router";
 import { createBrowserHistory } from "history";
 
-import { useDispatch } from "react-redux";
-import { fetchResource } from "./store/reducers/resources";
-
 import MainLayout from "./layouts/MainLayout";
+import { Loading } from "./components/Loading";
 
 const Home = lazy(() => import("./pages/Home"));
 const Tareas = lazy(() => import("./pages/Tasks"));
@@ -21,15 +21,12 @@ const Links = lazy(() => import("./pages/Links"));
 export const history = createBrowserHistory();
 
 function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchResource('tasks'))
-    dispatch(fetchResource('docs'));
-    dispatch(fetchResource('links'));
-  }, [dispatch]);
-
+  const status = useSelector((state) => getIsLoading(state))
   return (
     <Router history={history}>
+      { status > 0 &&
+        <Loading/>
+      }
       <MainLayout>
         <Suspense fallback={<div></div>}>
           <Route exact path="/" component={Home} />

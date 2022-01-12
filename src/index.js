@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { DataFetcher } from './components/DataFetcher'
 import store from "./store";
 import './index.css';
 import App from './App';
@@ -11,7 +12,9 @@ import './firebase-config.js';
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <DataFetcher>
+        <App />
+      </DataFetcher>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
