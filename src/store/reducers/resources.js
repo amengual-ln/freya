@@ -4,6 +4,7 @@ import { setTasks, deleteTask, createTask } from './tasks'
 import { setDocs, deleteDoc, createDoc } from './docs'
 import { setLinks, deleteLink, createLink } from './links'
 import { setProjects, deleteProject, createProject } from './projects'
+import { setBriefcases, deleteBriefcase, createBriefcase } from './briefcases'
 
 const initialState = {
 	loading: 0,
@@ -55,6 +56,7 @@ const getAction = (type, collection) => {
 		docs: deleteDoc,
 		links: deleteLink,
 		projects: deleteProject,
+		briefcases: deleteBriefcase,
 	}
 	const createActions = {
 		// should be create
@@ -62,12 +64,14 @@ const getAction = (type, collection) => {
 		docs: createDoc,
 		links: createLink,
 		projects: createProject,
+		briefcases: createBriefcase,
 	}
 	const setActions = {
 		tasks: setTasks,
 		docs: setDocs,
 		links: setLinks,
 		projects: setProjects,
+		briefcases: setBriefcases
 	}
 	const types = {
 		set: setActions,
