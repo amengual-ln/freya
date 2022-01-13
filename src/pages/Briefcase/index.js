@@ -3,8 +3,8 @@ import { useSelector } from "react-redux";
 import { getBriefcase } from "../../store/selectors/briefcases";
 import { getBriefcaseProjects } from "../../store/selectors/projects"
 
-import { List } from "../../components/List"
-import { ListItem } from "../../components/ListItem"
+import { Grid } from "../../components/Grid"
+import GridItem from "../../components/GridItem"
 
 export default function Briefcase () {
   const { id } = useParams();
@@ -16,13 +16,17 @@ export default function Briefcase () {
       <h2>{ briefcase.name }</h2>
       <br />
       <p>{ briefcase.description }</p>
-      <List>
+      <Grid>
         {briefcaseProjects.map((project) => (
-          <ListItem key={project.id}>
+          <GridItem 
+            key={project.id}
+            url="project"
+            item={project}
+            >
             {project.name}
-          </ListItem>
+          </GridItem>
         ))}
-      </List>
+      </Grid>
     </section>
   )
 }
