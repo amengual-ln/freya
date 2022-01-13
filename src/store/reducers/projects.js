@@ -1,29 +1,38 @@
-const initialState = [
-	{
-		id: '1',
-		briefcaseId: '1',
-		name: 'Freya',
-		description:
-			'Esta app. Una especie de merge de los portfolios de Asana, con los docs de ClickUp, y cosas que siento que faltan en esos proyectos.',
-		color: 'blue-400',
-	},
-	{
-		id: '2',
-		briefcaseId: '2',
-		name: 'AdminUP',
-		description:
-			'Producto de Upya pensado para levantar y vender sistemas de administración modulares de forma rápida. En principio enfocandonos en las necesidades de un emprendimiento de cervezas local.',
-		color: 'purple-900',
-	},
-	{
-		id: '3',
-		briefcaseId: '1',
-		name: 'Oh Tea',
-    description: 'De momento esto es solo un proyecto, pero en un futuro deberian ser varios. Web de la marca, tienda online, app, sistema de puntos/lealtad.',
-		color: 'red-200',
-	},
-]
 
-export default function state(state = initialState) {
+export default function state(state = [], action) {
+	if (action.type === '@projects/SET_PROJECTS') {
+		action.payload.forEach((project) => {
+			if (!state.find((previousProject) => previousProject.id === project.id)) {
+				state.push({
+					id: project.id,
+					...project.data(),
+				})
+			}
+		})
+	}
+	if (action.type === '@projects/CREATE_PROJECT') {
+		state = state.concat(action.payload)
+	}
 	return state
+}
+
+export const createProject = (project) => async (dispatch, getState) => {
+	dispatch({
+		type: '@projects/CREATE_PROJECT',
+		payload: project,
+	})
+}
+
+export const setProjects = (projects) => async (dispatch, getState) => {
+	dispatch({
+		type: '@projects/SET_PROJECTS',
+		payload: projects,
+	})
+}
+
+export const deleteProject = (id) => async (dispatch, getState) => {
+	dispatch({
+		type: '@projects/REMOVE_PROJECT',
+		payload: id,
+	})
 }
