@@ -7,14 +7,18 @@ export const DropdownOptions = ({ options, selected, onChange }) => {
 		onChange(optionId)
 	}
 
+	const getOption = () => {
+		return selected === 0
+			? { name: 'Ninguno', color: 'gray-300' }
+			: options.find((option) => option.id === selected)
+	}
+
 	return (
 		<div>
 			<Menu as="div" className="relative inline-block text-left">
 				<div>
-					<Menu.Button className="inline-flex justify-center w-full px-4 py-2 text-sm text-white whitespace-nowrap overflow-ellipsis bg-black rounded-md bg-opacity-20 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
-						{selected === 0
-							? 'Ninguno'
-							: options.find((option) => option.id === selected).name}
+					<Menu.Button className={`inline-flex justify-center w-full px-4 py-2 text-sm text-white whitespace-nowrap overflow-ellipsis bg-${getOption().color} rounded-md hover:bg-opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}>
+						{getOption().name}
 					</Menu.Button>
 				</div>
 				<Transition
@@ -31,7 +35,7 @@ export const DropdownOptions = ({ options, selected, onChange }) => {
 							<Menu.Item>
 								<option
 									onClick={() => handleClick(0)}
-									className="bg-violet-500 hover:text-blue-500 group flex rounded-md items-center w-full px-2 py-2 text-sm cursor-pointer"
+									className="hover:text-blue-500 group flex rounded-md items-center w-full px-2 py-2 text-sm cursor-pointer"
 								>
 									Ninguno
 								</option>
@@ -39,10 +43,11 @@ export const DropdownOptions = ({ options, selected, onChange }) => {
 						</div>
 						{options.map((option) => (
 							<div key={option.id} className="p-1">
-								<Menu.Item>
+								<Menu.Item as="div" className="flex items-center">
+									<span className={`text-${option.color} text-6xl h-8 -mt-8 ml-2`}>·</span>
 									<option
 										onClick={() => handleClick(option.id)}
-										className="bg-violet-500 hover:text-blue-500 group flex rounded-md items-center w-full px-2 py-2 text-sm cursor-pointer"
+										className="hover:text-blue-500 group flex rounded-md items-center w-full px-2 py-2 text-sm cursor-pointer"
 									>
 										{option.name}
 									</option>
