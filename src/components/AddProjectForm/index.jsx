@@ -14,7 +14,6 @@ export const AddProjectForm = ({ handleClose }) => {
 				...data,
 			})
 		)
-    console.log('Agregando y cerrando form')
 		handleClose()
 		reset()
 	}
@@ -38,10 +37,10 @@ export const AddProjectForm = ({ handleClose }) => {
 					autoComplete="off"
 					className="w-full bg-gray-100 rounded mb-3.5 p-1.5"
 				/>
-        <label htmlFor="title" className="text-sm">
+				<label htmlFor="title" className="text-sm">
 					Color
 				</label>
-        <input
+				<input
 					{...register('color')}
 					id="title"
 					autoComplete="off"
@@ -56,7 +55,7 @@ export const AddProjectForm = ({ handleClose }) => {
 					autoComplete="off"
 					className="w-full bg-gray-100 rounded mb-3.5 p-1.5"
 				/>
-        <label htmlFor="title" className="text-sm">
+				<label htmlFor="title" className="text-sm">
 					Portafolio
 				</label>
 				<input
@@ -66,7 +65,7 @@ export const AddProjectForm = ({ handleClose }) => {
 					className="w-full bg-gray-100 rounded mb-3.5 p-1.5"
 				/>
 				<div className="flex justify-end">
-					<Button handleClick={(event) => onCancel(event) }>
+					<Button handleClick={(event) => onCancel(event)}>
 						Cancelar
 					</Button>
 					<Button primary>

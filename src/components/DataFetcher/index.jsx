@@ -1,4 +1,4 @@
-import { useEffect} from 'react'
+import { useEffect } from 'react'
 import { useDispatch } from "react-redux";
 import { fetchResource } from "../../store/reducers/resources";
 

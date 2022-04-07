@@ -12,10 +12,9 @@ const initialState = {
 
 export default function state(state = initialState, action) {
 	if (action.type === '@resources/SET_LOADING') {
-		console.log(action.payload)
 		state.loading = action.payload ? state.loading + 1 : state.loading - 1
 	}
-	return state
+	return { ...state }
 }
 
 const setLoading = (isLoading) => (dispatch) => {
@@ -32,16 +31,16 @@ export const fetchResource = (collection) => async (dispatch, getState) => {
 
 export const createResource =
 	(collection, payload = null) =>
-	async (dispatch, getState) => {
-		const action = getAction('save', collection)
-		if (payload) {
-			const res = await db.collection(collection).add(payload)
-			await db.collection(collection).doc(res.id).update({ id: res.id })
-			dispatch(action({ id: res.id, ...payload }))
-		} else {
-			dispatch(action())
+		async (dispatch, getState) => {
+			const action = getAction('save', collection)
+			if (payload) {
+				const res = await db.collection(collection).add(payload)
+				await db.collection(collection).doc(res.id).update({ id: res.id })
+				dispatch(action({ id: res.id, ...payload }))
+			} else {
+				dispatch(action())
+			}
 		}
-	}
 
 export const deleteResource =
 	(collection, id) => async (dispatch, getState) => {
