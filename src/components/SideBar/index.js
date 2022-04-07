@@ -4,8 +4,8 @@ export const SideBar = () => {
 	return (
 		<aside className="fixed h-screen">
 			<Link to="/">
-        <h1 className="m-6 font-medium">Freya</h1>
-      </Link>
+				<h1 className="m-6 font-medium">Freya</h1>
+			</Link>
 			<ul className="px-8">
 				<li className="my-8">
 					<Link className="text-gray-600 py-4 hover:text-black" to="/tasks">
