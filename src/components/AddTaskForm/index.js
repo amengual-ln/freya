@@ -6,7 +6,7 @@ import { DropdownOptions } from '../DropdownOptions'
 import { getProjects } from '../../store/selectors/projects'
 import { createResource } from '../../store/reducers/resources'
 
-export default function AddTaskForm() {
+export const AddTaskForm = () => {
 	const dispatch = useDispatch()
 	const [taskDescription, setTaskDescription] = useState('')
 	const projects = useSelector((store) => getProjects(store))
