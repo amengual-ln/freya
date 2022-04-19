@@ -8,7 +8,10 @@ export const ModifyTaskForm = ({ task, handleClose }) => {
     const dispatch = useDispatch()
     const { register, handleSubmit, reset } = useForm({
         defaultValues: {
-            ...task
+            description: task.description,
+            projectId: task.projectId,
+            status: task.status,
+            id: task.id,
         }
     })
 
