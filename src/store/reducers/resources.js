@@ -1,10 +1,10 @@
 import { db } from '../../firebase-config'
 
-import { setTasks, deleteTask, createTask } from './tasks'
-import { setDocs, deleteDoc, createDoc } from './docs'
-import { setLinks, deleteLink, createLink } from './links'
-import { setProjects, deleteProject, createProject } from './projects'
-import { setBriefcases, deleteBriefcase, createBriefcase } from './briefcases'
+import { setTasks, deleteTask, createTask, modifyTask } from './tasks'
+import { setDocs, deleteDoc, createDoc, modifyDoc } from './docs'
+import { setLinks, deleteLink, createLink, modifyLink } from './links'
+import { setProjects, deleteProject, createProject, modifyProject } from './projects'
+import { setBriefcases, deleteBriefcase, createBriefcase, modifyBriefcase } from './briefcases'
 
 const initialState = {
 	loading: 0,
@@ -42,6 +42,14 @@ export const createResource =
 			}
 		}
 
+export const modifyResource =
+	(collection, id, payload) => async (dispatch, getState) => {
+		db.collection(collection).doc(id).update(payload)
+		const action = getAction('modify', collection)
+		dispatch(action(id, payload))
+	}
+
+
 export const deleteResource =
 	(collection, id) => async (dispatch, getState) => {
 		db.collection(collection).doc(id).delete()
@@ -72,9 +80,17 @@ const getAction = (type, collection) => {
 		projects: setProjects,
 		briefcases: setBriefcases
 	}
+	const modifyActions = {
+		tasks: modifyTask,
+		docs: modifyDoc,
+		links: modifyLink,
+		projects: modifyProject,
+		briefcases: modifyBriefcase
+	}
 	const types = {
 		set: setActions,
 		delete: deleteActions,
+		modify: modifyActions,
 		save: createActions, // should be create
 	}
 	return types[type][collection]

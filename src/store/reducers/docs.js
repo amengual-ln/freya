@@ -63,6 +63,8 @@ export const fetchDocs = () => async (dispatch, getState) => {
   });
 }
 
+export const modifyDoc = (doc) => async (dispatch, getState) => {}
+
 export const deleteDoc = (id) => async (dispatch, getState) => {
   dispatch({
     type: '@docs/REMOVE_DOC',

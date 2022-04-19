@@ -30,6 +30,8 @@ export const setProjects = (projects) => async (dispatch, getState) => {
 	})
 }
 
+export const modifyProject = (project) => async (dispatch, getState) => {}
+
 export const deleteProject = (id) => async (dispatch, getState) => {
 	dispatch({
 		type: '@projects/REMOVE_PROJECT',

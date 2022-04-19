@@ -9,9 +9,20 @@ export default function state(state = [], action) {
 			}
 		})
 	}
-  if (action.type === '@tasks/CREATE_TASK') {
-    state = state.concat(action.payload)
-  }
+	if (action.type === '@tasks/CREATE_TASK') {
+		state = state.concat(action.payload)
+	}
+	if (action.type === '@tasks/MODIFY_TASK') {
+		state = state.map((task) => {
+			if (task.id === action.payload.id) {
+				return {
+					...task,
+					...action.payload.data,
+				}
+			}
+			return task
+		})
+	}
 	if (action.type === '@tasks/DELETE_TASK') {
 		state = state.filter((task) => task.id !== action.payload)
 	}
@@ -31,6 +42,16 @@ export const deleteTask = (id) => async (dispatch, getState) => {
 	dispatch({
 		type: '@tasks/DELETE_TASK',
 		payload: id,
+	})
+}
+
+export const modifyTask = (id, data) => async (dispatch, getState) => {
+	dispatch({
+		type: '@tasks/MODIFY_TASK',
+		payload: {
+			id,
+			data,
+		},
 	})
 }
 

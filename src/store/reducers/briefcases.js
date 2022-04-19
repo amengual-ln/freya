@@ -29,6 +29,8 @@ export const setBriefcases = (briefcases) => async (dispatch, getState) => {
 	})
 }
 
+export const modifyBriefcase = (briefcase) => async (dispatch, getState) => {}
+
 export const deleteBriefcase = (id) => async (dispatch, getState) => {
 	dispatch({
 		type: '@briefcases/REMOVE_BRIEFCASE',

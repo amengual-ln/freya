@@ -52,6 +52,8 @@ export const setLinks = (links) => async (dispatch, getState) => {
 	})
 }
 
+export const modifyLink = (link) => async (dispatch, getState) => {}
+
 export const deleteLink = (id) => async (dispatch, getState) => {
 	dispatch({
 		type: '@links/REMOVE_LINK',
