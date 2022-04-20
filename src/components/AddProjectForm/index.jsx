@@ -59,8 +59,8 @@ export const AddProjectForm = ({ handleClose }) => {
 					Portafolio
 				</label>
 				<input
-					{...register('briefcase')}
-					id="briefcase"
+					{...register('briefcaseId')}
+					id="briefcaseId"
 					autoComplete="off"
 					className="w-full bg-gray-100 rounded mb-3.5 p-1.5"
 				/>
