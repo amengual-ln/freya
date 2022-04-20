@@ -7,6 +7,4 @@ export const getProject = (store, id) =>
 	getProjectsState(store)?.find((project) => project.id === id)
 
 export const getBriefcaseProjects = (store, briefcaseId) =>
-	getProjectsState(store)?.filter(
-		(project) => project.briefcaseId === briefcaseId
-	)
+	getProjectsState(store)?.filter((project) => project.briefcaseId === briefcaseId)
