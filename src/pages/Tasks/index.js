@@ -5,8 +5,10 @@ import { List } from '../../components/List'
 import { ListItem } from '../../components/ListItem'
 import { Task } from '../../components/Task'
 
-export default function Tasks() {
-	const tasks = useSelector((state) => getTasksAndProject(state))
+export default function Tasks({ home }) {
+	let tasks = useSelector((state) => getTasksAndProject(state))
+
+	if (home) tasks = tasks.slice(0, 5)
 
 	return (
 		<section>

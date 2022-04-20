@@ -6,7 +6,7 @@ export default function Home() {
 
 	return (
 		<>
-			<Tasks />
+			<Tasks home />
 			<br />
 			<Briefcases />
 			<br />
