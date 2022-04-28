@@ -17,6 +17,13 @@ export const getTasksAndProject = (store) => {
 	return tasksAndProject
 }
 
+export const getHomeTasksAndProject = (store) => {
+	const tasks = getTasksAndProject(store)
+	const uncompletedTasks = tasks.filter((task) => task.status !== 'DONE')
+
+	return uncompletedTasks.slice(0, 5)
+}
+
 export const getTask = (store, id) =>
 	getTasksState(store)?.find((task) => task.id === id)
 

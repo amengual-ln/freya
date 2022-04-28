@@ -1,14 +1,18 @@
 import { useSelector } from 'react-redux'
-import { getTasksAndProject } from '../../store/selectors/tasks'
+import { getTasksAndProject, getHomeTasksAndProject } from '../../store/selectors/tasks'
 import { AddTaskForm } from '../../components/AddTaskForm'
 import { List } from '../../components/List'
 import { ListItem } from '../../components/ListItem'
 import { Task } from '../../components/Task'
 
 export default function Tasks({ home }) {
-	let tasks = useSelector((state) => getTasksAndProject(state))
-
-	if (home) tasks = tasks.slice(0, 5)
+	let tasks = useSelector((state) => {
+		if (home) {
+			return getHomeTasksAndProject(state)
+		} else {
+			return getTasksAndProject(state)
+		}
+	})
 
 	return (
 		<section>
