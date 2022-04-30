@@ -6,7 +6,7 @@ export const getTasks = (store) =>
 	getTasksState(store) ? getTasksState(store) : []
 
 export const getTasksAndProject = (store) => {
-	const tasks = getTasks(store)
+	const tasks = getTasks(store).sort((taskA, taskB) => taskB.updatedAt - taskA.updatedAt)
 	const tasksAndProject = tasks.map((task) => {
 		const projectInfo = getProject(store, task.projectId)
 		return {
