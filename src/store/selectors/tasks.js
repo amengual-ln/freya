@@ -14,14 +14,16 @@ export const getTasksAndProject = (store) => {
 			project: projectInfo,
 		}
 	})
-	return tasksAndProject
+	const wip = tasksAndProject.filter((task) => task.status === 'WIP')
+	const todo = tasksAndProject.filter((task) => task.status === 'TODO')
+	const done = tasksAndProject.filter((task) => task.status === 'DONE')
+	return { wip, todo, done }
 }
 
 export const getHomeTasksAndProject = (store) => {
-	const tasks = getTasksAndProject(store)
-	const uncompletedTasks = tasks.filter((task) => task.status !== 'DONE')
-
-	return uncompletedTasks.slice(0, 5)
+	let tasks = getTasksAndProject(store)
+	tasks = [...tasks.wip, ...tasks.todo]
+	return tasks.slice(0, 5)
 }
 
 export const getTask = (store, id) =>

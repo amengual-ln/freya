@@ -1,11 +1,9 @@
 import { useSelector } from 'react-redux'
 import { getTasksAndProject, getHomeTasksAndProject } from '../../store/selectors/tasks'
 import { AddTaskForm } from '../../components/AddTaskForm'
-import { List } from '../../components/List'
-import { ListItem } from '../../components/ListItem'
-import { Task } from '../../components/Task'
+import { TaskGroup } from './components/TaskGroup'
 
-export default function Tasks({ home }) {
+export default function Tasks({ home = false }) {
 	let tasks = useSelector((state) => {
 		if (home) {
 			return getHomeTasksAndProject(state)
@@ -19,23 +17,18 @@ export default function Tasks({ home }) {
 			<h2>Tareas</h2>
 			<AddTaskForm />
 			<hr />
-			<List>
-				{tasks.map((task) => (
-					<ListItem key={task.id}>
-						<Task task={task}>
-							<div>
-								<span
-									className={`px-4 py-1.5 bg-${task.project ? task.project.color : 'white'
-										} text-white rounded`}
-								>
-									{task.project?.name}
-								</span>
-								<span className="px-4">{task.description}</span>
-							</div>
-						</Task>
-					</ListItem>
-				))}
-			</List>
+			{home ? (
+				<TaskGroup tasks={tasks} />
+			) : (
+				<>
+					<h4 className="font-medium text-gray-500 mt-3 -mb-2">WIP</h4>
+					<TaskGroup tasks={tasks.wip} />
+					<h4 className="font-medium text-gray-500 -mb-2">TO DO</h4>
+					<TaskGroup tasks={tasks.todo} />
+					<h4 className="font-medium text-gray-500 -mb-2">DONE</h4>
+					<TaskGroup tasks={tasks.done} />
+				</>
+			)}
 		</section>
 	)
 }
