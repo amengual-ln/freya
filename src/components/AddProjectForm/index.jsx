@@ -11,6 +11,7 @@ export const AddProjectForm = ({ handleClose }) => {
 	const onSubmit = async (data) => {
 		dispatch(
 			createResource('projects', {
+				active: true,
 				...data,
 			})
 		)
