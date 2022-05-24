@@ -61,9 +61,8 @@ export default function Card({
 				<Link to={to}>
 					<CardItem
 						color={color}
-						className={`card bg-${
-							color ? color : 'white'
-						} shadow hover:shadow-md`}
+						className={`card bg-${color ? color : 'white'
+							} shadow hover:shadow-md`}
 					>
 						{children}
 					</CardItem>
@@ -72,9 +71,8 @@ export default function Card({
 				<a target="_blank" rel="noreferrer" href={href}>
 					<CardItem
 						color={color}
-						className={`card bg-${
-							color ? color : 'white'
-						} shadow hover:shadow-md`}
+						className={`card bg-${color ? color : 'white'
+							} shadow hover:shadow-md`}
 					>
 						{children}
 					</CardItem>

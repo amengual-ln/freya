@@ -27,7 +27,7 @@ export const Modal = ({ isOpen, hide, children }) => (
 					leaveFrom="transform opacity-100 scale-100"
 					leaveTo="transform opacity-0 scale-95"
 				>
-					<div className="inline-block w-full max-w-md p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-lg rounded-lg">
+					<div className="inline-block w-full max-w-md p-6 my-8 text-left align-middle transition-all transform bg-white shadow-lg rounded-lg">
 						<button
 							onClick={hide}
 							className="absolute right-0 top-0 m-2.5 px-2.5 py-0.5 rounded hover:bg-gray-200 focus:outline-none"
