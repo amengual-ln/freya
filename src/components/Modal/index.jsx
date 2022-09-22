@@ -11,13 +11,13 @@ export const Modal = ({ isOpen, hide, children }) => (
 			<div className="min-h-screen text-center">
 				<Transition.Child
 					enter="ease-out duration-300"
-					enterFrom="opacity-0 scale-95"
-					enterTo="opacity-100 scale-100"
+					enterFrom="opacity-0"
+					enterTo="opacity-100"
 					leave="ease-in duration-200"
-					leaveFrom="opacity-100 scale-100"
-					leaveTo="opacity-0 scale-95"
+					leaveFrom="opacity-100"
+					leaveTo="opacity-0"
 				>
-					<Dialog.Overlay className="fixed top-0 right-0 bottom-0 left-0 inset-0 bg-black" />
+					<Dialog.Overlay className="fixed top-0 right-0 bottom-0 left-0 inset-0 bg-black/25" />
 				</Transition.Child>
 				<Transition.Child
 					enter="ease-out duration-200"
