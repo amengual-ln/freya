@@ -25,7 +25,7 @@ export const Dropdown = ({ options=[], taskId }) => {
 								<Menu.Item>
 									<button
 										onClick={() => option.handler(taskId)}
-										className="bg-violet-500 hover:text-blue-500 group flex rounded-md items-center w-full px-2 py-2 text-sm cursor-pointer"
+										className="hover:text-blue-500 group flex rounded-md items-center w-full px-2 py-2 text-sm cursor-pointer"
 									>
 										{ option.label }
 									</button>

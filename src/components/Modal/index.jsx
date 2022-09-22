@@ -5,7 +5,7 @@ export const Modal = ({ isOpen, hide, children }) => (
 	<Transition appear show={isOpen}>
 		<Dialog
 			as="div"
-			className="fixed inset-0 z-10 overflow-y-auto"
+			className="fixed inset-0 z-50 overflow-y-auto"
 			onClose={hide}
 		>
 			<div className="min-h-screen text-center">
@@ -17,7 +17,7 @@ export const Modal = ({ isOpen, hide, children }) => (
 					leaveFrom="opacity-100 scale-100"
 					leaveTo="opacity-0 scale-95"
 				>
-					<Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-30" />
+					<Dialog.Overlay className="fixed top-0 right-0 bottom-0 left-0 inset-0 bg-black" />
 				</Transition.Child>
 				<Transition.Child
 					enter="ease-out duration-200"

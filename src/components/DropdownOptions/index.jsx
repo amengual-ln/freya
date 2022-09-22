@@ -17,7 +17,7 @@ export const DropdownOptions = ({ options, selected, onChange }) => {
 		<div>
 			<Menu as="div" className="relative inline-block text-left">
 				<div>
-					<Menu.Button className={`inline-flex justify-center w-full px-4 py-2 text-sm text-white whitespace-nowrap overflow-ellipsis bg-${getOption().color} rounded-md hover:bg-opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}>
+					<Menu.Button className={`inline-flex justify-center w-full px-4 py-2 text-sm text-white whitespace-nowrap text-ellipsis bg-${getOption().color} rounded-md hover:bg-opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}>
 						{getOption().name}
 					</Menu.Button>
 				</div>

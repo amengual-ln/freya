@@ -7,9 +7,9 @@ import { Button } from '../../components/atoms/Button'
 import Card from '../../components/Card'
 import { createResource } from '../../store/reducers/resources'
 
-var relativeTime = require('dayjs/plugin/relativeTime')
+import relativeTime from 'dayjs/plugin/relativeTime'
 dayjs.extend(relativeTime)
-require('dayjs/locale/es')
+import 'dayjs/locale/es'
 
 export default function Docs() {
 	const dispatch = useDispatch()

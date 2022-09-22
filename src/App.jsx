@@ -1,9 +1,10 @@
 import { lazy, Suspense } from "react";
 import { useSelector } from 'react-redux'
 import { getIsLoading } from './store/selectors/resources'
-import { Route } from "react-router-dom";
-import { Router } from "react-router";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+// import { Router } from "react-router";
 import { createBrowserHistory } from "history";
+import { CompatRouter } from "react-router-dom-v5-compat"
 
 import MainLayout from "./layouts/MainLayout";
 import { Loading } from "./components/Loading";
@@ -25,6 +26,7 @@ function App() {
 
   return (
     <Router history={history}>
+      <CompatRouter>
       { status > 0 ? <Loading /> :
         <MainLayout>
           <Suspense fallback={<></>}>
@@ -40,6 +42,7 @@ function App() {
           </Suspense>
         </MainLayout>
       }
+      </CompatRouter>
     </Router>
   );
 }

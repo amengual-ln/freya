@@ -1,4 +1,4 @@
-import { history } from "../../App.js";
+import { history } from "../../App";
 import { db } from "../../firebase-config";
 
 export default function state(state = [], action) {

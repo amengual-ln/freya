@@ -1,10 +1,10 @@
-import firebase from 'firebase/app';
-import 'firebase/firestore';
-require('dotenv').config()
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore';
+
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY,
+  apiKey: import.meta.env.FIREBASE_API_KEY,
   authDomain: "freya-42.firebaseapp.com",
   projectId: "freya-42",
   storageBucket: "freya-42.appspot.com",
