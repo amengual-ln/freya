@@ -23,9 +23,11 @@ export const Task = ({ task, children }) => {
                 <span className="px-4">{task.status}</span>
                 <Dropdown options={dropdownOptions} taskId={task?.id} />
             </div>
-            <Modal isOpen={isOpen} hide={toggle}>
-                <ModifyTaskForm task={task} handleClose={toggle} />
-            </Modal>
+            <div className='absolute'>
+                <Modal isOpen={isOpen} hide={toggle}>
+                    <ModifyTaskForm task={task} handleClose={toggle} />
+                </Modal>
+            </div>
         </>
     )
 }
