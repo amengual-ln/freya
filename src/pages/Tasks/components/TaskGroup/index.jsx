@@ -9,12 +9,14 @@ export const TaskGroup = ({ tasks }) => {
                 <ListItem key={task.id}>
                     <Task task={task}>
                         <div>
-                            <span
-                                className={`px-4 py-1.5 bg-${task.project ? task.project.color : 'white'
-                                    } text-white rounded`}
-                            >
-                                {task.project?.name}
-                            </span>
+                            {task.project &&
+                                <span
+                                    className={`px-4 py-1.5 bg-${task.project.color ?? 'gray-300'
+                                        } text-white rounded`}
+                                >
+                                    {task.project?.name}
+                                </span>
+                            }
                             <span className="px-4">{task.description}</span>
                         </div>
                     </Task>
