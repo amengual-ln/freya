@@ -1,20 +1,34 @@
-import { useParams } from 'react-router';
-import { useSelector } from 'react-redux';
-import { getProject } from '../../store/selectors/projects';
+import { useParams } from 'react-router'
+import { useSelector, useDispatch } from 'react-redux'
+import { getProject } from '../../store/selectors/projects'
 import { getProjectTasks } from '../../store/selectors/tasks'
 
+import { modifyResource } from '../../store/reducers/resources'
+
+import { Toggle } from '../../components/atoms/Toggle'
 import { List } from '../../components/List'
 import { ListItem } from '../../components/ListItem'
 import { Task } from '../../components/Task'
 
 export default function Project() {
-  const { id } = useParams();
-  const project = useSelector(state => getProject(state, id));
-  const projectTasks = useSelector(state => getProjectTasks(state, id));
+  const { id } = useParams()
+  const dispatch = useDispatch()
+  const project = useSelector(state => getProject(state, id))
+  const projectTasks = useSelector(state => getProjectTasks(state, id))
+
+  const toggleProjectStatus = (enabled) => {
+    dispatch(modifyResource('projects', id, {
+      ...project,
+      active: enabled
+    }))
+  }
 
   return (
     <section>
-      <h2>{project.name}</h2>
+      <header className="flex justify-between items-center">
+        <h2>{project.name}</h2>
+        <Toggle handleToggle={toggleProjectStatus} initial={project.active} color={project.color} />
+      </header>
       <br />
       <p>{project.description}</p>
       <br />
