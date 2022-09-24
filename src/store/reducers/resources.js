@@ -34,9 +34,9 @@ export const createResource =
 		async (dispatch, getState) => {
 			const action = getAction('save', collection)
 			if (payload) {
-				payload = { 
-					...payload, 
-					createdAt: new Date(), 
+				payload = {
+					...payload,
+					createdAt: new Date(),
 					updatedAt: new Date()
 				}
 				const res = await db.collection(collection).add(payload)
@@ -49,9 +49,11 @@ export const createResource =
 
 export const modifyResource =
 	(collection, id, payload) => async (dispatch, getState) => {
-		payload = {
-			...payload,
-			updatedAt: new Date()
+		if (collection === 'docs') {
+			payload = {
+				...payload,
+				updatedAt: new Date()
+			}
 		}
 		db.collection(collection).doc(id).update(payload)
 		const action = getAction('modify', collection)
