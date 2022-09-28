@@ -29,5 +29,10 @@ export const getHomeTasksAndProject = (store) => {
 export const getTask = (store, id) =>
 	getTasksState(store)?.find((task) => task.id === id)
 
-export const getProjectTasks = (store, projectId) =>
-	getTasksState(store)?.filter((task) => task.projectId === projectId)
+export const getProjectTasks = (store, projectId) => {
+	const tasks = getTasksState(store)?.filter((task) => task.projectId === projectId)
+	const wip = tasks.filter((task) => task.status === 'WIP')
+	const todo = tasks.filter((task) => task.status === 'TODO')
+	const done = tasks.filter((task) => task.status === 'DONE')
+	return { wip, todo, done }
+}

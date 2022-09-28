@@ -6,9 +6,7 @@ import { getProjectTasks } from '../../store/selectors/tasks'
 import { modifyResource } from '../../store/reducers/resources'
 
 import { Toggle } from '../../components/atoms/Toggle'
-import { List } from '../../components/List'
-import { ListItem } from '../../components/ListItem'
-import { Task } from '../../components/Task'
+import { TaskGroup } from '../../components/TaskGroup'
 
 export default function Project() {
   const { id } = useParams()
@@ -33,20 +31,12 @@ export default function Project() {
       <p>{project.description}</p>
       <br />
       <h3>Tareas</h3>
-      <List>
-        {projectTasks.length === 0 &&
-          <div className='text-center'>
-            <span>No hay tareas pendientes en este proyecto</span>
-          </div>
-        }
-        {projectTasks.map((task) => (
-          <ListItem key={task.id}>
-            <Task task={task}>
-              <span className='px-4'>{task.description}</span>
-            </Task>
-          </ListItem>
-        ))}
-      </List>
+      <h4 className="font-medium text-gray-500 mt-3 -mb-2">WIP</h4>
+      <TaskGroup tasks={projectTasks.wip} />
+      <h4 className="font-medium text-gray-500 -mb-2">TO DO</h4>
+      <TaskGroup tasks={projectTasks.todo} />
+      <h4 className="font-medium text-gray-500 -mb-2">DONE</h4>
+      <TaskGroup tasks={projectTasks.done} />
     </section>
   )
 }
