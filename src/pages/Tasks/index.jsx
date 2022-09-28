@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 import { getTasksAndProject, getHomeTasksAndProject } from '../../store/selectors/tasks'
 import { AddTaskForm } from '../../components/AddTaskForm'
-import { TaskGroup } from './components/TaskGroup'
+import { TaskGroup } from '../../components/TaskGroup'
 
 export default function Tasks({ home = false }) {
 	let tasks = useSelector((state) => {

@@ -1,10 +1,15 @@
-import { List } from '../../../../components/List'
-import { ListItem } from '../../../../components/ListItem'
-import { Task } from '../../../../components/Task'
+import { List } from '../../components/List'
+import { ListItem } from '../../components/ListItem'
+import { Task } from '../../components/Task'
 
 export const TaskGroup = ({ tasks }) => {
     return (
         <List>
+            {tasks.length === 0 &&
+                <div className='text-center'>
+                    <span>No hay tareas en este grupo</span>
+                </div>
+            }
             {tasks.map((task) => (
                 <ListItem key={task.id}>
                     <Task task={task}>
