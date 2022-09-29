@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { ListItem } from '../ListItem'
 import { DropdownOptions } from '../DropdownOptions'
-import { getProjects } from '../../store/selectors/projects'
+import { getActiveProjects } from '../../store/selectors/projects'
 import { createResource } from '../../store/reducers/resources'
 
 export const AddTaskForm = () => {
 	const dispatch = useDispatch()
 	const [taskDescription, setTaskDescription] = useState('')
-	const projects = useSelector((store) => getProjects(store))
+	const projects = useSelector((store) => getActiveProjects(store))
 	const [selectedProject, setSelectedProject] = useState(0)
 
 	const handleInputChange = (e) => {
