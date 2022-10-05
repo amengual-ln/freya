@@ -1,18 +1,29 @@
-import { useDispatch } from 'react-redux'
+import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useForm } from 'react-hook-form'
 
+import { getBriefcases } from '../../store/selectors/briefcases'
+
 import { Button } from '../../components/atoms/Button'
+import { Select } from '../../components/atoms/Select'
 import { createResource } from '../../store/reducers/resources'
 
 export const AddProjectForm = ({ handleClose }) => {
 	const dispatch = useDispatch()
+	const briefcases = useSelector(state => getBriefcases(state))
+	const [selectedBriefcase, setSelectedBriefcase] = useState()
 	const { register, handleSubmit, reset } = useForm()
+
+	const handleBriefcaseChange = (newBriefcase) => {
+		setSelectedBriefcase(newBriefcase)
+	}
 
 	const onSubmit = async (data) => {
 		dispatch(
 			createResource('projects', {
 				active: true,
 				...data,
+				briefcaseId: selectedBriefcase.id
 			})
 		)
 		handleClose()
@@ -59,12 +70,13 @@ export const AddProjectForm = ({ handleClose }) => {
 				<label htmlFor="title" className="text-sm">
 					Portafolio
 				</label>
-				<input
+				<Select options={briefcases} handleChange={handleBriefcaseChange} />
+				{/* <input
 					{...register('briefcaseId')}
 					id="briefcaseId"
 					autoComplete="off"
 					className="w-full bg-gray-100 rounded mb-3.5 p-1.5"
-				/>
+				/> */}
 				<div className="flex justify-end">
 					<Button handleClick={(event) => onCancel(event)}>
 						Cancelar
