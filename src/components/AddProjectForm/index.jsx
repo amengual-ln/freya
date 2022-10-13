@@ -6,22 +6,29 @@ import { getBriefcases } from '../../store/selectors/briefcases'
 
 import { Button } from '../../components/atoms/Button'
 import { Select } from '../../components/atoms/Select'
+import { ColorPicker } from '../../components/atoms/ColorPicker'
 import { createResource } from '../../store/reducers/resources'
 
 export const AddProjectForm = ({ handleClose }) => {
 	const dispatch = useDispatch()
 	const briefcases = useSelector(state => getBriefcases(state))
 	const [selectedBriefcase, setSelectedBriefcase] = useState()
+	const [selectedColor, setSelectedColor] = useState('')
 	const { register, handleSubmit, reset } = useForm()
 
 	const handleBriefcaseChange = (newBriefcase) => {
 		setSelectedBriefcase(newBriefcase)
 	}
 
+	const handleColorChange = (newColor) => {
+		setSelectedColor(newColor)
+	}
+
 	const onSubmit = async (data) => {
 		dispatch(
 			createResource('projects', {
 				active: true,
+				color: selectedColor.name,
 				...data,
 				briefcaseId: selectedBriefcase.id
 			})
@@ -53,11 +60,15 @@ export const AddProjectForm = ({ handleClose }) => {
 					Color
 				</label>
 				<input
-					{...register('color')}
 					id="title"
 					autoComplete="off"
-					className="w-full bg-gray-100 rounded mb-3.5 p-1.5"
+					readOnly
+					value={selectedColor.name || ''}
+					className={`peer w-full bg-gray-100 rounded mb-3.5 p-1.5`}
 				/>
+				<div className="hidden peer-focus:block hover:block">
+					<ColorPicker handleChange={handleColorChange}></ColorPicker>
+				</div>
 				<label htmlFor="title" className="text-sm">
 					Descripción
 				</label>
@@ -71,12 +82,6 @@ export const AddProjectForm = ({ handleClose }) => {
 					Portafolio
 				</label>
 				<Select options={briefcases} handleChange={handleBriefcaseChange} />
-				{/* <input
-					{...register('briefcaseId')}
-					id="briefcaseId"
-					autoComplete="off"
-					className="w-full bg-gray-100 rounded mb-3.5 p-1.5"
-				/> */}
 				<div className="flex justify-end">
 					<Button handleClick={(event) => onCancel(event)}>
 						Cancelar
