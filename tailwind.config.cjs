@@ -13,5 +13,8 @@ module.exports = {
       }
     },
   },
+  safelist: [
+    { pattern: /bg-(red|blue|green|yellow|gray|purple|violet|pink|lime|orange)-(100|200|300|400|500|600|700|800|900)/ }
+  ],
   plugins: [],
 }
