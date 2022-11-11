@@ -6,6 +6,7 @@ import { getProjectTasks } from '../../store/selectors/tasks'
 import { modifyResource } from '../../store/reducers/resources'
 
 import { Toggle } from '../../components/atoms/Toggle'
+import { Collapsible } from '../../components/atoms/Collapsible'
 import { TaskGroup } from '../../components/TaskGroup'
 
 export default function Project() {
@@ -31,12 +32,18 @@ export default function Project() {
       <p>{project.description}</p>
       <br />
       <h3>Tareas</h3>
-      <h4 className="font-medium text-gray-500 mt-3 -mb-2">WIP</h4>
-      <TaskGroup tasks={projectTasks.wip} />
-      <h4 className="font-medium text-gray-500 -mb-2">TO DO</h4>
-      <TaskGroup tasks={projectTasks.todo} />
-      <h4 className="font-medium text-gray-500 -mb-2">DONE</h4>
-      <TaskGroup tasks={projectTasks.done} />
+      <Collapsible title="WIP" isOpen={projectTasks.wip.length > 0}>
+        <TaskGroup tasks={projectTasks.wip} />
+      </Collapsible>
+      <hr className="mt-4" />
+      <Collapsible title="TO DO" isOpen={projectTasks.todo.length > 0}>
+        <TaskGroup tasks={projectTasks.todo} />
+      </Collapsible>
+      <hr className="mt-4" />
+
+      <Collapsible title="DONE" isOpen={projectTasks.done.length > 0}>
+        <TaskGroup tasks={projectTasks.done} />
+      </Collapsible>
     </section>
   )
 }

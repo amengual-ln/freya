@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux'
 import { getTasksAndProject, getHomeTasksAndProject } from '../../store/selectors/tasks'
 import { AddTaskForm } from '../../components/AddTaskForm'
 import { TaskGroup } from '../../components/TaskGroup'
+import { Collapsible } from '../../components/atoms/Collapsible'
 
 export default function Tasks({ home = false }) {
 	let tasks = useSelector((state) => {
@@ -21,12 +22,17 @@ export default function Tasks({ home = false }) {
 				<TaskGroup tasks={tasks} />
 			) : (
 				<>
-					<h4 className="font-medium text-gray-500 mt-3 -mb-2">WIP</h4>
-					<TaskGroup tasks={tasks.wip} />
-					<h4 className="font-medium text-gray-500 -mb-2">TO DO</h4>
-					<TaskGroup tasks={tasks.todo} />
-					<h4 className="font-medium text-gray-500 -mb-2">DONE</h4>
-					<TaskGroup tasks={tasks.done} />
+					<Collapsible title="WIP" isOpen={tasks.wip.length > 0}>
+						<TaskGroup tasks={tasks.wip} />
+					</Collapsible>
+					<hr className="mt-4" />
+					<Collapsible title="TO DO" isOpen={tasks.wip.length > 0}>
+						<TaskGroup tasks={tasks.todo} />
+					</Collapsible>
+					<hr className="mt-4" />
+					<Collapsible title="DONE" isOpen={tasks.wip.length > 0}>
+						<TaskGroup tasks={tasks.done} />
+					</Collapsible>
 				</>
 			)}
 		</section>
